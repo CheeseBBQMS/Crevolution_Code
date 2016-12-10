@@ -58,6 +58,7 @@ namespace Robot1
            DPAD_RIGHT = 0,
            DPAD_LEFT = 0,
            RIGHT_X   = 0,
+            CHEA = 0,
            RIGHT_Y   = 1,
            LEFT_X    = 2,
            LEFT_Y    = 3;
