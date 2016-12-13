@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using WPILib;
 using WPILib.SmartDashboard;
-using Robot1;
 
 
 namespace Robot1
@@ -37,8 +36,8 @@ namespace Robot1
         int autoSelected;
         SendableChooser chooser;
 
-        IO    IO = new IO();
-        Robot RB = new Robot();
+        IO    io = new IO();
+        Robot robot = new Robot();
 
         
 
@@ -54,7 +53,7 @@ namespace Robot1
             SmartDashboard.PutData("Chooser", chooser);
 
             //Goes to the Robot Class to accesss the Accuator's ports on the robot
-            RB.Robot_init();
+            robot.Robot_init();
 
         }
 
@@ -95,7 +94,7 @@ namespace Robot1
                     case (int)Autons.defaultAuto:
                     default:
                         //Put default auto code here
-                        RB.First_Peroson_Drive.SetLeftRightMotorOutputs(0, 0);
+                        robot.firstPerosonDrive.SetLeftRightMotorOutputs(0, 0);
                         break;
                 }
             }
@@ -108,22 +107,22 @@ namespace Robot1
         {
             while (IsOperatorControl && IsEnabled)
             {
-                RB.First_Peroson_Drive.SetLeftRightMotorOutputs(IO.Driver_Controller_Axes(IO.RIGHT_Y), IO.Driver_Controller_Axes(IO.LEFT_Y));
+                robot.firstPerosonDrive.SetLeftRightMotorOutputs(io.Driver_Controller_Axes(IO.RIGHT_Y), io.Driver_Controller_Axes(IO.LEFT_Y));
 
-                RB.Arm_Motor.Set(IO.Operator_Controller_Axes(IO.RIGHT_Y));
+                robot.armMotor.Set(io.Operator_Controller_Axes(IO.RIGHT_Y));
 
 
-                if (IO.Driver_Controller_Button(IO.R_Trigger))
+                if (io.Driver_Controller_Button(IO.R_Trigger))
                 {
-                    RB.Arm_Motor.Set(ON_FORWARD);
+                    robot.armMotor.Set(ON_FORWARD);
                 }
-                else if (IO.Operator_Controller_Button(IO.L_Trigger))
+                else if (io.Operator_Controller_Button(IO.L_Trigger))
                 {
-                    RB.Arm_Motor.Set(ON_REVERSE);
+                    robot.armMotor.Set(ON_REVERSE);
                 }
                 else
                 {
-                    RB.Intake_Roller.Set(OFF);
+                    robot.intakeRoller.Set(OFF);
                 }
                 Timer.Delay(0.01);
             }
