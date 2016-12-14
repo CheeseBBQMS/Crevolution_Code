@@ -23,14 +23,17 @@ namespace Robot1
         {
             return driverController.GetRawAxis(Axes);
         }
+
         public double operatorControllerAxes(int Axes)
         {
             return operatorController.GetRawAxis(Axes);
         }
+
         public bool driverControllerButton(int Button)
         {
             return driverController.GetRawButton(Button);
         }
+
         public bool operatorControllerButton(int Button)
         {
             return operatorController.GetRawButton(Button);

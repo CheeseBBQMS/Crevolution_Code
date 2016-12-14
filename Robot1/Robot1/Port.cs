@@ -63,9 +63,15 @@ namespace Robot1{
 
         public AnalogGyro gyro;
 
+        public Joystick driverController,
+                        operatorController;
+
         //Init for Robot
         public void Robot_init()
         {
+            driverController = new Joystick(controllers.DRIVER_CONTROLLER);
+            operatorController = new Joystick(controllers.OPERATOR_CONTROLLER);
+
             rightEncoder = new WPILib.Encoder(digitalPort.R_EN_1, digitalPort.R_EN_2);
             leftEncoder = new WPILib.Encoder(digitalPort.L_EN_1, digitalPort.L_EN_2);
 
