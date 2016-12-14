@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DriveTrain.cs" />
     <Compile Include="IO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Robot1.cs" />

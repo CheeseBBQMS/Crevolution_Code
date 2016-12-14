@@ -10,8 +10,8 @@ namespace Robot1
     class IO
     {
 
-        public Joystick driver_controller = new Joystick(Controllers.DRIVER_CONTROLLER),
-                 operator_controller = new Joystick(Controllers.OPERATOR_CONTROLLER);
+        private J driverController = new Joystick(controllers.DRIVER_CONTROLLER),
+                        operatorController = new Joystick(controllers.OPERATOR_CONTROLLER);
          
         public bool Joystick_Button(Joystick joystick, int button)
         {
@@ -20,24 +20,24 @@ namespace Robot1
 
         public Joystick getDriveStick()
         {
-            return driver_controller;
+            return driverController;
         }
 
         public double Driver_Controller_Axes(int Axes)
         {
-            return driver_controller.GetRawAxis(Axes);
+            return driverController.GetRawAxis(Axes);
         }
         public double Operator_Controller_Axes(int Axes)
         {
-            return driver_controller.GetRawAxis(Axes);
+            return operatorController.GetRawAxis(Axes);
         }
         public bool Driver_Controller_Button(int Button)
         {
-            return driver_controller.GetRawButton(Button);
+            return driverController.GetRawButton(Button);
         }
         public bool Operator_Controller_Button(int Button)
         {
-            return driver_controller.GetRawButton(Button);
+            return operatorController.GetRawButton(Button);
         }
 
         public const int
@@ -58,6 +58,7 @@ namespace Robot1
            DPAD_RIGHT = 0,
            DPAD_LEFT = 0,
            RIGHT_X   = 0,
+            CHEA = 0,
            RIGHT_Y   = 1,
            LEFT_X    = 2,
            LEFT_Y    = 3;
