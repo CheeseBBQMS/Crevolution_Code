@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using WPILib;
 
 namespace Robot1
@@ -10,7 +6,7 @@ namespace Robot1
     class IO
     {
 
-        private J driverController = new Joystick(controllers.DRIVER_CONTROLLER),
+        private Joystick driverController = new Joystick(controllers.DRIVER_CONTROLLER),
                         operatorController = new Joystick(controllers.OPERATOR_CONTROLLER);
          
         public bool Joystick_Button(Joystick joystick, int button)
@@ -23,19 +19,19 @@ namespace Robot1
             return driverController;
         }
 
-        public double Driver_Controller_Axes(int Axes)
+        public double driverControllerAxes(int Axes)
         {
             return driverController.GetRawAxis(Axes);
         }
-        public double Operator_Controller_Axes(int Axes)
+        public double operatorControllerAxes(int Axes)
         {
             return operatorController.GetRawAxis(Axes);
         }
-        public bool Driver_Controller_Button(int Button)
+        public bool driverControllerButton(int Button)
         {
             return driverController.GetRawButton(Button);
         }
-        public bool Operator_Controller_Button(int Button)
+        public bool operatorControllerButton(int Button)
         {
             return operatorController.GetRawButton(Button);
         }
@@ -58,7 +54,6 @@ namespace Robot1
            DPAD_RIGHT = 0,
            DPAD_LEFT = 0,
            RIGHT_X   = 0,
-            CHEA = 0,
            RIGHT_Y   = 1,
            LEFT_X    = 2,
            LEFT_Y    = 3;

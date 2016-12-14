@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using WPILib;
 using WPILib.SmartDashboard;
 
@@ -107,16 +105,16 @@ namespace Robot1
         {
             while (IsOperatorControl && IsEnabled)
             {
-                robot.firstPerosonDrive.SetLeftRightMotorOutputs(io.Driver_Controller_Axes(IO.RIGHT_Y), io.Driver_Controller_Axes(IO.LEFT_Y));
+                robot.firstPerosonDrive.SetLeftRightMotorOutputs(io.driverControllerAxes(IO.RIGHT_Y), io.driverControllerAxes(IO.LEFT_Y));
 
-                robot.armMotor.Set(io.Operator_Controller_Axes(IO.RIGHT_Y));
+                robot.armMotor.Set(io.operatorControllerAxes(IO.RIGHT_Y));
 
 
-                if (io.Driver_Controller_Button(IO.R_Trigger))
+                if (io.driverControllerButton(IO.R_Trigger))
                 {
                     robot.armMotor.Set(ON_FORWARD);
                 }
-                else if (io.Operator_Controller_Button(IO.L_Trigger))
+                else if (io.operatorControllerButton(IO.L_Trigger))
                 {
                     robot.armMotor.Set(ON_REVERSE);
                 }

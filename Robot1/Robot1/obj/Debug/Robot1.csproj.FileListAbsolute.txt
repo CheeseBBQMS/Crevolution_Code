@@ -16,3 +16,5 @@ C:\Users\Martin Smoger\Source\Repos\Crevolution_Code\Robot1\Robot1\obj\Debug\Rob
 C:\Users\Martin Smoger\Source\Repos\Crevolution_Code\Robot1\Robot1\obj\Debug\Robot1.pdb
 C:\Users\Martin\Documents\GitHub\Crevolution_Code_2017\Robot1\Robot1\obj\Debug\Robot1.exe
 C:\Users\Martin\Documents\GitHub\Crevolution_Code_2017\Robot1\Robot1\obj\Debug\Robot1.pdb
+C:\Users\Martin Smoger\Documents\GitHub\Crevolution_Code\Robot1\Robot1\obj\Debug\Robot1.exe
+C:\Users\Martin Smoger\Documents\GitHub\Crevolution_Code\Robot1\Robot1\obj\Debug\Robot1.pdb
