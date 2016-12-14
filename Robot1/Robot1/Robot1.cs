@@ -34,11 +34,11 @@ namespace Robot1
         int autoSelected;
         SendableChooser chooser;
 
-        IO    io = new IO();
-        Robot robot = new Robot();
-
-        
-
+       // IO    io = new IO();
+        Robot rbt = new Robot();
+        private Joystick driverController,
+                         operatorController;
+                         
         /// <summary>
         /// This function is run when the robot is first started up and should be
         /// used for any initialization code.
@@ -51,7 +51,10 @@ namespace Robot1
             SmartDashboard.PutData("Chooser", chooser);
 
             //Goes to the Robot Class to accesss the Accuator's ports on the robot
-            robot.Robot_init();
+            rbt.Robot_init();
+
+            driverController = new Joystick(controllers.DRIVER_CONTROLLER);
+            operatorController = new Joystick(controllers.OPERATOR_CONTROLLER);
 
         }
 
@@ -92,7 +95,7 @@ namespace Robot1
                     case (int)Autons.defaultAuto:
                     default:
                         //Put default auto code here
-                        robot.firstPerosonDrive.SetLeftRightMotorOutputs(0, 0);
+                        rbt.firstPerosonDrive.SetLeftRightMotorOutputs(0, 0);
                         break;
                 }
             }
@@ -101,26 +104,39 @@ namespace Robot1
         /// <summary>
         /// This function is called periodically during operator control
         /// </summary>
+        /// 
+        public override void TeleopInit()
+        {
+            
+
+        }
+
         public override void TeleopPeriodic()
         {
             while (IsOperatorControl && IsEnabled)
             {
-                robot.firstPerosonDrive.SetLeftRightMotorOutputs(io.driverControllerAxes(IO.RIGHT_Y), io.driverControllerAxes(IO.LEFT_Y));
+                double drvRight_Y = controllerJoystick(driverController, IO.LEFT_Y);
+                double drvLeft_Y = io.controllerJoystick(driverController, IO.RIGHT_Y);
 
-                robot.armMotor.Set(io.operatorControllerAxes(IO.RIGHT_Y));
+                double oprRight_Y = io.controllerJoystick(rbt.IO.RIGHT_Y)
 
 
-                if (io.driverControllerButton(IO.R_Trigger))
+                rbt.firstPerosonDrive.SetLeftRightMotorOutputs(drvLeft_Y, drvRight_Y);
+
+                rbt.armMotor.Set(oprRight_Y);
+
+
+                if (io.controllerButton(rbt.driverController, IO.R_Trigger))
                 {
-                    robot.armMotor.Set(ON_FORWARD);
+                    rbt.armMotor.Set(ON_FORWARD);
                 }
-                else if (io.operatorControllerButton(IO.L_Trigger))
+                else if (io.controllerButton(rbt.driverController, IO.L_Trigger))
                 {
-                    robot.armMotor.Set(ON_REVERSE);
+                    rbt.armMotor.Set(ON_REVERSE);
                 }
                 else
                 {
-                    robot.intakeRoller.Set(OFF);
+                    rbt.intakeRoller.Set(OFF);
                 }
                 Timer.Delay(0.01);
             }

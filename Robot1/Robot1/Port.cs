@@ -6,8 +6,8 @@ namespace Robot1{
  
     public class controllers
    {
-        public const byte DRIVER_CONTROLLER         = 0;
-        public const byte OPERATOR_CONTROLLER       = 1;
+        public const byte DRIVER_CONTROLLER      = 0;
+        public const byte OPERATOR_CONTROLLER    = 1;
    }
 
 
@@ -43,6 +43,10 @@ namespace Robot1{
         public const byte L_EN_1 = 5;
         public const byte L_EN_2 = 6;
     }
+    public class soleniodPort
+    {
+
+    }
 
     public class Robot
     {
@@ -58,7 +62,7 @@ namespace Robot1{
         public DigitalInput limitSwitch1,
                             limitSwitch2;
 
-        public WPILib.Encoder rightEncoder,
+        public Encoder rightEncoder,
                               leftEncoder;
 
         public AnalogGyro gyro;
@@ -69,11 +73,8 @@ namespace Robot1{
         //Init for Robot
         public void Robot_init()
         {
-            driverController = new Joystick(controllers.DRIVER_CONTROLLER);
-            operatorController = new Joystick(controllers.OPERATOR_CONTROLLER);
-
-            rightEncoder = new WPILib.Encoder(digitalPort.R_EN_1, digitalPort.R_EN_2);
-            leftEncoder = new WPILib.Encoder(digitalPort.L_EN_1, digitalPort.L_EN_2);
+            rightEncoder = new Encoder(digitalPort.R_EN_1, digitalPort.R_EN_2);
+            leftEncoder = new Encoder(digitalPort.L_EN_1, digitalPort.L_EN_2);
 
             rightFrontMotor = new CANTalon(motorCAN.RIGHT_FRONT_PORT);
             rightRearMotor = new CANTalon(motorCAN.RIGHT_REAR_PORT);
@@ -92,6 +93,12 @@ namespace Robot1{
 
             firstPerosonDrive.SetInvertedMotor(MotorType.FrontLeft, true);
             firstPerosonDrive.SetInvertedMotor(MotorType.RearLeft, true);
+
+        }
+
+        //Working on init, for each thing. 
+        public void initMotor()
+        {
 
         }
 

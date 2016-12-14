@@ -1,44 +1,50 @@
-﻿
+﻿using System;
 using WPILib;
 
 namespace Robot1
 {
     class IO
     {
+        private Joystick selectController;
 
-        private Joystick driverController = new Joystick(controllers.DRIVER_CONTROLLER),
-                        operatorController = new Joystick(controllers.OPERATOR_CONTROLLER);
-         
-        public bool Joystick_Button(Joystick joystick, int button)
+        public bool controllerButton(Joystick joystick, int button)
         {
-            return (joystick.GetRawButton(button));
+            selectController = joystick;
+            return (selectController.GetRawButton(button));
         }
 
-        public Joystick getDriveStick()
+        public double controllerJoystick(Joystick joystick, int axes )
         {
-            return driverController;
+            selectController = joystick;
+            return (selectController.GetRawAxis(axes));
         }
 
-        public double driverControllerAxes(int Axes)
+        public double shape(double inValue)
         {
-            return driverController.GetRawAxis(Axes);
-        }
+            inputActive = (Math.Abs(inValue) > 0.1);
+            inputSlow = (Math.Abs(inValue) < 0.8);
 
-        public double operatorControllerAxes(int Axes)
-        {
-            return operatorController.GetRawAxis(Axes);
-        }
+            double sign = Math.Sign(inValue);
+            if (inputActive)
+            {
+                if (inputSlow)
+                {
+                    double output = sign * (Math.Abs(inValue));
+                    return output;
+                }
+                else
+                {
+                    double output = sign * (Math.Abs(inValue));
+                    return output;
+                }
+            }
+            else
+            {
+                return 0;
+            }
 
-        public bool driverControllerButton(int Button)
-        {
-            return driverController.GetRawButton(Button);
         }
-
-        public bool operatorControllerButton(int Button)
-        {
-            return operatorController.GetRawButton(Button);
-        }
-
+   
         public const int
            X_Button = 1,
            A_Button = 2,
@@ -60,6 +66,9 @@ namespace Robot1
            RIGHT_Y   = 1,
            LEFT_X    = 2,
            LEFT_Y    = 3;
+
+        private bool inputActive;
+        private bool inputSlow;
     } 
 
   

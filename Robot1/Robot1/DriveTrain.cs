@@ -18,8 +18,6 @@ public class DriveTrain
                     rightEnc;
 
          private enum Direction {Forward, Reverse};
-
-
     
     //use for testing 
          public void initMotors(CANTalon rightFront, CANTalon rightRear, CANTalon leftFront, CANTalon leftRear)
